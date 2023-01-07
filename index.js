@@ -8,7 +8,7 @@ exports.handler = async (data, context) => {
     
         // Process the decrypted name value, and re-encrypt the original name using the encrypt function available in the context parameter.
         return {
-            message: `Hello from a Function! It seems you have ${data.name.length} letters in your name`,
+            message: `Hello from a Function! It seems you have ${data.name.length} letters in your name, actually the name is ${data.name}`,
             name: context.encrypt(data.name),
         };
     } else {
