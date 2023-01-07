@@ -15,7 +15,7 @@ exports.handler = async (data, context) => {
     };	
 	
     // Check if the data sent into the Function included the `name` key
-    if (data.name && typeof data.name === "string") {
+    /*if (data.name && typeof data.name === "string") {
         console.debug(`A name of length ${data.name.length} has arrived into the Function.`);
     
         // Process the decrypted name value, and re-encrypt the original name using the encrypt function available in the context parameter.
@@ -26,5 +26,5 @@ exports.handler = async (data, context) => {
         return {
             message: 'Hello from a Function! Send an encrypted `name` parameter to show Function decryption in action',
         };
-    }
+    }*/
 };
