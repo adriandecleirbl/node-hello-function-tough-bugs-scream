@@ -5,13 +5,13 @@ exports.handler = async (data, context) => {
 	
 	let returnString = '';
 	
-	for(let i = 0;i<data.length;i++) {
-		returnString += ` name: ${data[i].name} \n`;
+	for(let i = 0;i<data.array.length;i++) {
+		returnString += ` name: ${data.array[i].name} \n`;
 	}
 	
     return {
         message: returnString,
-        name: context.encrypt(data[0].name),
+        name: context.encrypt(data.array[0].name),
     };	
 	
     // Check if the data sent into the Function included the `name` key
