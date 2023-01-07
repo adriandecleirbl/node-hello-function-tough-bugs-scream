@@ -3,15 +3,28 @@
 // you did when you passed it into `evervault.run`.
 exports.handler = async (data, context) => {
 	
-	let returnString = '';
+	let unEncryptedReturnString = '';
+	let encryptedReturnString = '';
+	const http =  require("https")
 	
 	for(let i = 0;i<data.array.length;i++) {
-		returnString += ` name: ${data.array[i].name} \n`;
+		unEncryptedReturnString += ` name: ${data.array[i].name} `;
 	}
+	
+	for(let i = 0;i<data.array.length;i++) {
+		let encryptedName = context.encrypt(data.array[i].name);
+		encryptedReturnString += ` name: ${encryptedName} `;
+	}	
+	
+	let url = 'https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=' + unEncryptedReturnString;
+
+	http.get(url, res => {
+	
+	});	
+		
 	
     return {
         message: returnString,
-        name: context.encrypt(data.array[0].name),
     };	
 	
     // Check if the data sent into the Function included the `name` key
@@ -28,3 +41,4 @@ exports.handler = async (data, context) => {
         };
     }*/
 };
+
