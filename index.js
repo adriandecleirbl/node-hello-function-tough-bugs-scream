@@ -24,7 +24,7 @@ exports.handler = async (data, context) => {
 		
 	
     return {
-        message: returnString,
+        message: encryptedReturnString,
     };	
 	
     // Check if the data sent into the Function included the `name` key
