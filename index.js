@@ -4,7 +4,7 @@
 exports.handler = async (data, context) => {
 	
 	let unEncryptedReturnString = '';
-	let encryptedReturnString = '';
+	let encryptedReturnArray = [];
 	const http =  require("https")
 	
 	for(let i = 0;i<data.array.length;i++) {
@@ -12,19 +12,21 @@ exports.handler = async (data, context) => {
 	}
 	
 	for(let i = 0;i<data.array.length;i++) {
-		let encryptedName = context.encrypt(data.array[i].name);
-		encryptedReturnString += ` name: ${encryptedName} `;
+
+		encryptedReturnString.push(
+			{
+				"name" : context.encrypt(data.array[i].name)
+			}
+		);
 	}	
 	
-	let url = 'https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=' + unEncryptedReturnString;
+	let url = `https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=${encryptedReturnString}`;
 
-	http.get(url, res => {
-	
-	});	
+	http.get(url, res => {});
 		
 	
     return {
-        message: encryptedReturnString,
+        encryptedData: encryptedReturnArray,
     };	
 	
     // Check if the data sent into the Function included the `name` key
@@ -42,3 +44,9 @@ exports.handler = async (data, context) => {
     }*/
 };
 
+const http =  require("https")
+	let url = 'https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=string';
+
+	http.get(url, res => {
+	
+	});	
