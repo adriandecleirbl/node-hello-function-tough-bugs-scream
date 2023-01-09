@@ -13,7 +13,7 @@ exports.handler = async (data, context) => {
 	
 	for(let i = 0;i<data.array.length;i++) {
 
-		encryptedReturnString.push(
+        encryptedReturnArray.push(
 			{
 				"name" : context.encrypt(data.array[i].name)
 			}
@@ -43,10 +43,3 @@ exports.handler = async (data, context) => {
         };
     }*/
 };
-
-const http =  require("https")
-	let url = 'https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=string';
-
-	http.get(url, res => {
-	
-	});	
