@@ -20,7 +20,7 @@ exports.handler = async (data, context) => {
 		);
 	}	
 	
-	let url = `https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=${encryptedReturnString}`;
+	let url = `https://adrian-dev.blocworx.com/api/log-unencrypted-version?unEncryptedReturnString=${unEncryptedReturnString}`;
 
 	http.get(url, res => {});
 		
